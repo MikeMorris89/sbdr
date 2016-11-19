@@ -3,36 +3,32 @@ FROM rocker/r-base
 MAINTAINER mike morris "mike.morris89@github.com"
 
 # system libraries of general use
-RUN apt-get update
-#RUN apt-get install -y aptitude
-RUN apt-get install -y apt-utils
-#RUN aptitude update
-RUN apt-get install -y	default-jdk
-#RUN aptitude install -y sudo 
-#RUN aptitude install -y	gdebi-core	 
-#RUN aptitude install -y	pandoc 
-#RUN aptitude install -y	pandoc-citeproc  
-#RUN apt-get install -y	software-properties-common
-#RUN apt-get install -y	curl/Stable
-RUN apt-get install -y	libssl-dev 
-RUN apt-get install -y	libxml2-dev	
-RUN apt-get install -y --allow-downgrades libcurl3=7.50.1-1 
-RUN apt-get install -y	libcurl4-openssl-dev 
+RUN apt-get update  -qq \
+ && apt-get upgrade -y
+
+RUN apt-get install -y --no-install-recommends --allow-downgrades \
+	apt-utils \
+	default-jdk \
+	libssl-dev \
+	libxml2-dev \
+	libcurl3=7.50.1-1 \
+	libcurl4-openssl-dev \
+	&& rm -rf /var/lib/apt/lists/*
 
 # basic shiny functionality
-RUN R -e "install.packages('shiny', repos='https://cloud.r-project.org/')"
-RUN R -e "install.packages('rmarkdown',repos='https://cloud.r-project.org/')"
-RUN R -e "install.packages('stringr', repos='https://cloud.r-project.org/')"
-RUN R -e "install.packages('googleVis', repos='https://cloud.r-project.org/')"
-RUN R -e "install.packages('RJDBC', repos='https://cloud.r-project.org/')"
-RUN R -e "install.packages('RJSONIO', repos='https://cloud.r-project.org/')"
-RUN R -e "install.packages('RSQLite', repos='https://cloud.r-project.org/')"
-RUN R -e "install.packages('devtools', repos='https://cloud.r-project.org/')"
-RUN R -e "install.packages('testthat', repos='https://cloud.r-project.org/')"
-RUN R -e 'devtools::install_github("mul118/shinyMCE")'
-RUN R -e 'devtools::install_github("mul118/shinyGridster")'
-RUN R -e 'devtools::install_github("iheartradio/ShinyBuilder")'
-
+RUN R -e "install.packages('shiny' \
+	,'rmarkdown' \
+	,'stringr' \
+	,'googleVis' \
+	,'RJDBC' \
+	,'RJSONIO' \
+	,'RSQLite' \
+	,'devtools' \
+	,'testthat', repos='https://cloud.r-project.org/')" \
+    && R -e 'devtools::install_github("mul118/shinyMCE")' \
+    && R -e 'devtools::install_github("mul118/shinyGridster")' \
+    && R -e 'devtools::install_github("iheartradio/ShinyBuilder")' \
+    && R -e 'remove.packages("devtools")'
 
 # copy the app to the image
 RUN mkdir /root/sb

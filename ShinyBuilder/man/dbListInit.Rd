@@ -1,0 +1,17 @@
+\name{dbListInit}
+\alias{dbListInit}
+\title{Initialize connections in db list}
+\usage{
+dbListInit()
+}
+\value{
+an initialized db_list object
+}
+\description{
+Load db list from file, initializing connections to all
+included databases.
+}
+\examples{
+\dontrun{db_list <- dbListInit()}
+}
+

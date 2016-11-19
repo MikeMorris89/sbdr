@@ -3,24 +3,17 @@ FROM rocker/r-base
 MAINTAINER mike morris "mike.morris89@github.com"
 
 # system libraries of general use
-RUN apt-get update && apt-get install -y \
-	default-jdk 
-RUN apt-get update && apt-get -f install -y \
-        sudo 
-RUN apt-get update && apt-get -f install -y \
-	gdebi-core	 
-RUN apt-get update && apt-get -f install -y \
-	pandoc 
-RUN apt-get update && apt-get -f install -y \
-	pandoc-citeproc  
-apt-get install -t stable libssl1.0.0
+RUN apt-get update
+RUN apt-get install -y aptitude
 
-RUN apt-get update && apt-get -f install -y \
-	libssl-dev 
-RUN apt-get update && apt-get -f install -y \
-	libxml2-dev	
-RUN apt-get update && apt-get -f install -y \
-	libcurl4-openssl-dev 
+RUN aptitude install -y	default-jdk 
+#RUN aptitude install -y sudo 
+#RUN aptitude install -y	gdebi-core	 
+#RUN aptitude install -y	pandoc 
+#RUN aptitude install -y	pandoc-citeproc  
+RUN aptitude install -y	libssl-dev 
+RUN aptitude install -y	libxml2-dev	
+RUN aptitude install -y	libcurl4-openssl-dev 
 
 # basic shiny functionality
 RUN R -e "install.packages('shiny', repos='https://cloud.r-project.org/')"

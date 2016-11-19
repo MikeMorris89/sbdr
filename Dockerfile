@@ -8,6 +8,8 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get update && apt-get -f install -y \
         sudo 
 RUN apt-get update && apt-get -f install -y \
+	gdebi-core	 
+RUN apt-get update && apt-get -f install -y \
 	pandoc 
 RUN apt-get update && apt-get -f install -y \
 	pandoc-citeproc  

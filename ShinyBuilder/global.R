@@ -17,11 +17,19 @@ library(ShinyBuilder)
 
 source(system.file('googleChart.R', package = 'ShinyBuilder'))
 
+substrRight <- function(x, n){
+  substr(x, nchar(x)-n+1, nchar(x))
+}
+
 #DB list
 db_list <- dbListInit()
 
 #Shinybuilder directory
 sb_dir <- system.file('', package = 'ShinyBuilder')
+if(substrRight(sb_dir,n=1)!='/')
+{
+  paste(sb_dir,'/',sep='')
+}
 
 #Available dashboards
 available_dashboards <- str_replace(list.files(path = str_c(sb_dir,'dashboards')), '.RData', '')

@@ -8,11 +8,14 @@ RUN apt-get update && apt-get install -y \
 
 # basic shiny functionality
 RUN R -e "install.packages('shiny', repos='https://cloud.r-project.org/')"
-RUN R -e "install.packages('rmarkdown', repos='https://cloud.r-project.org/')"
-RUN R -e "install.packages('rmarkdown', repos='https://cloud.r-project.org/')"
-RUN R -e "install.packages('rmarkdown', repos='https://cloud.r-project.org/')"
-RUN R -e "install.packages('rmarkdown', repos='https://cloud.r-project.org/')"
-RUN R -e "install.packages('devtools', repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages('rmarkdown',repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages('stringr',dep=T, repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages('googleVis',dep=T, repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages('RJDBC',dep=T, repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages('RJSONIO',dep=T, repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages('RSQLite',dep=T, repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages('devtools', dep=T, repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages('testthat',dep=T, repos='https://cloud.r-project.org/')"
 RUN R -e 'devtools::install_github("mul118/shinyMCE")'
 RUN R -e 'devtools::install_github("mul118/shinyGridster")'
 RUN R -e 'devtools::install_github("iheartradio/ShinyBuilder")'

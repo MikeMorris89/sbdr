@@ -20,6 +20,18 @@ Adds a new database to db list.
 \examples{
 \dontrun{
 db <- quote({dbConnect(dbDriver('SQLite'), dbname = system.file('data/births.db', package = 'ShinyBuilder'))})
-dbListAdd(db_name = 'SQLite Database', db = db, query_fn = RJDBC::dbGetQuery, default_query = 'SELECT * FROM births')}
+dbListAdd(db_name = 'SQLite Database', db = db, query_fn = RJDBC::dbGetQuery, default_query = 'SELECT * FROM births')
+
+db <- quote({dbConnect(dbDriver('SQLite'), dbname = system.file('data/chinook.db', package = 'ShinyBuilder'))})
+dbListAdd(db_name = 'SQLite sample database', db = db, query_fn = RJDBC::dbGetQuery, default_query = 'SELECT
+ artists.ArtistId,
+ albumId
+FROM
+ artists
+LEFT JOIN albums ON albums.artistid = artists.artistid
+WHERE
+ albumid IS NULL;')
+
+}
 }
 

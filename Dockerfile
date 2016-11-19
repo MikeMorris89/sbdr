@@ -13,6 +13,8 @@ RUN apt-get update && apt-get -f install -y \
 	pandoc 
 RUN apt-get update && apt-get -f install -y \
 	pandoc-citeproc  
+apt-get install -t stable libssl1.0.0
+
 RUN apt-get update && apt-get -f install -y \
 	libssl-dev 
 RUN apt-get update && apt-get -f install -y \

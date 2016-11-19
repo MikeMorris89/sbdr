@@ -5,7 +5,8 @@ MAINTAINER mike morris "mike.morris89@github.com"
 # system libraries of general use
 RUN apt-get update
 RUN apt-get install -y aptitude
-
+RUN aptitude install -y apt-utils
+RUN aptitude update
 RUN aptitude install -y	default-jdk 
 #RUN aptitude install -y sudo 
 #RUN aptitude install -y	gdebi-core	 

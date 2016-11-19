@@ -15,17 +15,14 @@ RUN apt-get install -y --no-install-recommends --allow-downgrades \
 	libcurl4-openssl-dev \
 	&& rm -rf /var/lib/apt/lists/*
 
-<<<<<<< HEAD
 # basic shiny functionality
 RUN R -e "install.packages('shiny','rmarkdown' ,'stringr','googleVis','RJDBC','RJSONIO','RSQLite','devtools','testthat')" \
     && R -e 'devtools::install_github("mul118/shinyMCE")' \
     && R -e 'devtools::install_github("mul118/shinyGridster")' \
     && R -e 'devtools::install_github("iheartradio/ShinyBuilder")' \
     && R -e 'remove.packages("devtools")'
-=======
 
 
->>>>>> 0ccb430f592912ebae95cefec7eddf5687570e7c
 
 # copy the app to the image
 RUN mkdir /root/sb

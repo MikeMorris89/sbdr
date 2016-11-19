@@ -5,13 +5,17 @@ MAINTAINER mike morris "mike.morris89@github.com"
 # system libraries of general use
 RUN apt-get update && apt-get install -y \
 	default-jdk 
-RUN apt-get update && apt-get install -y \
-	libcurl3 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get -f install -y \
+        sudo 
+RUN apt-get update && apt-get -f install -y \
+	pandoc 
+RUN apt-get update && apt-get -f install -y \
+	pandoc-citeproc  
+RUN apt-get update && apt-get -f install -y \
 	libssl-dev 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get -f install -y \
 	libxml2-dev	
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get -f install -y \
 	libcurl4-openssl-dev 
 
 # basic shiny functionality

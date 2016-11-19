@@ -11,6 +11,8 @@ RUN aptitude install -y	default-jdk
 #RUN aptitude install -y	gdebi-core	 
 #RUN aptitude install -y	pandoc 
 #RUN aptitude install -y	pandoc-citeproc  
+RUN aptitude install -y	software-properties-common
+RUN aptitude install -y	curl
 RUN aptitude install -y	libssl-dev 
 RUN aptitude install -y	libxml2-dev	
 RUN aptitude install -y	libcurl4-openssl-dev 

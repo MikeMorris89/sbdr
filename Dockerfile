@@ -16,7 +16,7 @@ RUN apt-get install -y	default-jdk
 #RUN apt-get install -y	curl/Stable
 RUN apt-get install -y	libssl-dev 
 RUN apt-get install -y	libxml2-dev	
-RUN apt-get install -y libcurl3-dev=7.50.1-1
+RUN apt-get install -y --allow-downgrades libcurl3=7.50.1-1 
 RUN apt-get install -y	libcurl4-openssl-dev 
 
 # basic shiny functionality
@@ -40,6 +40,7 @@ COPY ShinyBuilder /root/sb
 
 COPY Rprofile.site /usr/lib/R/etc/
 
+RUN mkdir /srv/shiny-server
 RUN mkdir /srv/shiny-server/ShinyBuilder
 VOLUME /srv/shiny-server/ShinyBuilder
 

@@ -36,8 +36,8 @@ VOLUME /srv/shiny-server/ShinyBuilder
 
 EXPOSE 3838
 
-#CMD ["R", "-e ShinyBuilder::runShinyBuilder()"]
-CMD ["R", "-e deployShinyBuilder(dir = '/srv/shiny-server/ShinyBuilder')"]
+CMD ["R", "-e ShinyBuilder::runShinyBuilder()"]
+#CMD ["R", "-e deployShinyBuilder(dir = '/srv/shiny-server/ShinyBuilder')"]
 
 
 

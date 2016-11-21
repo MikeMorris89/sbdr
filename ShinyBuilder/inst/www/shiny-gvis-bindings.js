@@ -1,5 +1,7 @@
 (function(){
 
+
+
  var gvisRefresh = function(){ 
       for (var k in window) {
           if (k.indexOf('chartgItemPlot') === 0) {

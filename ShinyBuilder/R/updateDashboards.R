@@ -38,7 +38,8 @@ updateDashboards <- function(dashboards = NULL){
         db_obj                    <- db_list[[dashboard_state[[i]]$db_name]]
         tryCatch(
           {
-            dashboard_state[[i]]$data <- do.call(db_obj$query_fn, list(db_obj$db, input_query))
+            #dashboard_state[[i]]$data <- do.call(db_obj$query_fn, list(db_obj$db, input_query))
+            dashboard_state[[i]]$data<- dbGetQuery(conn = db_obj$db ,input_query)
           },
           error=function(cond) {
             message("Dashboard threw an error updating:")

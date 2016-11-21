@@ -7,6 +7,7 @@
 #---------
 library(stringr)
 library(googleVis)
+library(shinyGoogleCharts)
 #library(RJDBC)
 library(RJSONIO)
 library(RSQLite)
@@ -14,6 +15,8 @@ library(shinyAce)
 library(shinyMCE)
 library(shinyGridster)
 library(ShinyBuilder)
+
+
 
 source(system.file('googleChart.R', package = 'ShinyBuilder'))
 

@@ -1,6 +1,0 @@
-#!/bin/bash	
-sudo chown -R rstudio ./*
-sudo chown -R rstudio .*
-sudo chown -R rstudio *
-
-

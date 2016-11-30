@@ -1,6 +1,0 @@
-#!/bin/bash	
-sudo chown -R ubuntu ./*
-sudo chown -R ubuntu .*
-sudo chown -R ubuntu *
-
-

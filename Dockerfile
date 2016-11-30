@@ -16,7 +16,7 @@ RUN apt-get install -y --no-install-recommends --allow-downgrades \
 	&& rm -rf /var/lib/apt/lists/*
 
 # basic shiny functionality
-RUN R -e "install.packages(c('shiny','rmarkdown' ,'stringr','googleVis','rJava','shinyAce','RJDBC','RJSONIO','RSQLite','devtools','testthat','shinyGoogleCharts'),dep=T)" \
+RUN R -e "install.packages(c('shiny','rmarkdown' ,'stringr','googleVis','rJava','shinyAce','RJDBC','RJSONIO','RSQLite','devtools','shinyGoogleCharts','shinybootstrap2'),dep=T)" \
     && R -e 'devtools::install_github("mikemorris89/shinyMCE")' \
     && R -e 'devtools::install_github("mikemorris89/shinyGridster")' \
     && R -e 'devtools::install_github("mikemorris89/ShinyBuilder")' \

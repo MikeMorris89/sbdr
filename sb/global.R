@@ -4,6 +4,7 @@
 #install.packages('shinybootstrap2')
 #install.packages('googleVis')
 #remove.packages('googleVis')
+#remove.packages('rJava')
 options(shiny.fullstacktrace = TRUE)
 #---------
 #Libraries

@@ -1,14 +1,14 @@
-FROM rocker/r-ver:3.1.0
+FROM rocker/r-base
 
 MAINTAINER mike morris "mike.morris89@github.com"
 
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x219BD9C9
-RUN echo "deb http://repos.azulsystems.com/ubuntu stable main" >> /etc/apt/sources.list.d/zulu.list
-RUN apt-get - update
-RUN apt-get -y install zulu-7
+# system libraries of general use
+RUN apt-get update  -qq \
+ && apt-get upgrade -y
 
 RUN apt-get install -y --no-install-recommends --allow-downgrades \
 	apt-utils \
+	default-jdk \
 	libssl-dev \
 	libxml2-dev \
 	libcurl3=7.50.1-1 \
@@ -26,18 +26,17 @@ RUN R -e "install.packages(c('shiny','rmarkdown' ,'stringr','googleVis','rJava',
 
 # copy the app to the image
 RUN mkdir /root/sb
-COPY ShinyBuilder /root/sb
+COPY sb /root/sb
 
 COPY Rprofile.site /usr/lib/R/etc/
 
 RUN mkdir /srv/shiny-server
-RUN mkdir /srv/shiny-server/ShinyBuilder
-VOLUME /srv/shiny-server/ShinyBuilder
+RUN mkdir /srv/shiny-server/sb
+VOLUME /srv/shiny-server/sb
 
 EXPOSE 3838
 
-CMD ["R", "-e ShinyBuilder::runShinyBuilder()"]
+#CMD ["R", "-e ShinyBuilder::runShinyBuilder()"]
 #CMD ["R", "-e deployShinyBuilder(dir = '/srv/shiny-server/ShinyBuilder')"]
-
-
+CMD ["R", "-e shiny::runApp('/root/sb')"]
 
